@@ -1,0 +1,264 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Checkout {% endblock %}
+{% block css %}
+
+body {
+padding-top: 65px;
+}
+
+{% endblock %}
+
+{% block css2 %}
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:110px;
+    }
+}
+<!--.a11:hover {-->
+<!--  color: red;-->
+<!--  background-color: transparent;-->
+<!--  text-decoration: underline;-->
+<!--}-->
+{% endblock %}
+{% block body %}
+<span id="over"></span>
+<div class="container">
+    <div class="col my-4">
+        <h2>Step 1 - Express Checkout - Review your items: </h2>
+        <div class="my-4 col-md-6" style="margin: auto;">
+            <span id="over1"></span>
+            <ul class="list-group" id="items">
+            </ul>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mt-2">
+<!--                    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+                    <li class="breadcrumb-item active" aria-current="page">Your cart total is: <b><div class="mx-2" style="float:right"> ₹ <span id="totalPrice"> </span></div></b></li>
+              </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="col my-4">
+        <h2>Step 2 - Enter your details: </h2>
+        <form method="post" action="/shop/checkout/">{% csrf_token %}
+            <input type="hidden" name="itemsJson" id="itemsJson">
+            <input type="hidden" name="amount" id="amount">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address1">Address</label>
+                <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St" required>
+            </div>
+            <div class="form-group">
+                <label for="address2">Address Line 2</label>
+                <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="landmark">Landmark</label>
+                    <input type="text" class="form-control" id="landmark" name="landmark" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="state">State</label>
+                    <select id="state" class="form-control" name="state" required>
+                        <option>Choose...</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jammu and Kashmir</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="zip_code">Zip</label>
+                    <input type="text" class="form-control" id="zip_code" name="zip_code" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" maxlength="10" name="phone" placeholder="10 digits phone number" required>
+                </div>
+
+            </div>
+            <span id="over2">
+            <button type="submit" class="btn btn-primary">Place Order</button>
+            </span>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+<script>
+
+    $('#popcart1').popover();
+
+    mail = JSON.parse(localStorage.getItem('mail'));
+
+    if (localStorage.getItem('mail') == null){
+<!--        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>" style="size:2px">-->
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+    else{
+        pops='<a href="/shop/yourOrders">Your Orders</a><br><a onclick="clearmail()" href="/shop/signout">Sign out</a>'
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+    function clearmail()
+    {
+        mail = null
+        localStorage.setItem('mail', null);
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+    if (localStorage.getItem('cart') == null) 
+    {
+        var cart = {};
+    } 
+    else 
+    {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    var sum = 0;
+    var totalPrice = 0;
+
+    if ($.isEmptyObject(cart) )
+    {
+        mystr = '<p>Oh no! It seems your cart is empty! Please add items before checkout</p>';
+        $('#items').append(mystr);
+    }
+    
+    else {
+        var itt=0;
+        for (item in cart) 
+        {
+            let pp = item.slice(2,);
+            let name = cart[item][1];
+            let qty = cart[item][0];
+            let itemPrice = cart[item][2];
+            sum = sum + qty;
+            totalPrice= totalPrice + qty * itemPrice
+            mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a class="a11" href="/shop/products/${pp}"> ${name} </a>
+                    <span class="badge badge-secondary badge-pill">₹${itemPrice} X Qty: ${qty}</span>
+                </li>`
+            $('#items').append(mystr);
+            itt++;
+        }
+        console.log(itt);
+    }
+    
+    document.getElementById('cart').innerHTML = sum;
+    document.getElementById('totalPrice').innerHTML = totalPrice;
+    $('#itemsJson').val(JSON.stringify(cart));
+
+    if (itt>6)
+    {
+        document.getElementById('over').innerHTML = '<div class="alert alert-warning" role="alert">Cannot order more than 6 items at once.</div>';
+        document.getElementById('over1').innerHTML = '<div class="alert alert-danger" role="alert"><i class="fi-cnsuxm-times-solid"></i> Please remove item(s)!</div>';
+        document.getElementById('over2').innerHTML = '<button type="submit" class="btn btn-primary" disabled>Place Order</button>';
+    }
+
+<!-- fa fa-times-circle-->
+    {% if thank %}
+        alert('Thank you for shopping with us! Your order ID is {{id}}. You can use it to track your order');
+        localStorage.clear();
+        document.location = "/shop";
+    {% endif %}
+
+<!--TESTING CODE-->
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+    function updatePopover(cart) {
+        var popStr = "";
+        popStr = popStr + "<div> <h5 style='display: flex; justify-content: center;'>Your Cart</h5><hr></div><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+                        if ((cart[item][1]).length > 14) {
+                            popStr = popStr + (cart[item][1]).slice(0, 14) + "... | Qty: " + cart[item][0] + '<br>';
+                        } else if ((cart[item][1]).length <= 17) {
+                            popStr = popStr + (cart[item][1]) + " | Qty: " + cart[item][0] + '<br>';
+                        }
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+<!--        $('#popcart').popover('hide')-->
+        if (screen.width > 991) {
+            $('#popcart').popover('show');
+        } else {
+            $('#popcart').popover();
+        }
+    }
+
+<!--console.log(document.getElementById('items').innerHTML);-->
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            if (('div' + item) == ('divpr{{product.id}}')){
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+            }
+        }
+        localStorage.clear();
+        cart = {};
+        updateCart(cart);
+        if ($.isEmptyObject(cart))
+        {
+            mystr = '<p>Oh no! It seems your cart is empty! Please add items before checkout</p>';
+            document.getElementById('over2').innerHTML = '<button type="submit" class="btn btn-primary" disabled>Place Order</button>';
+            document.getElementById('items').innerHTML='';
+            $('#items').append(mystr);
+            var tp=0
+            document.getElementById('totalPrice').innerHTML = tp;
+
+        }
+    }
+    if ($.isEmptyObject(cart))
+    {
+        document.getElementById('over2').innerHTML = '<button type="submit" class="btn btn-primary" disabled>Place Order</button>';
+    }
+    function updateCart(cart) {
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item][0];
+            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        //<!--    console.log(cart);-->
+        updatePopover(cart);
+//        $('#popcart').popover('show');
+    }
+<!--console.log(totalPrice)-->
+$('#amount').val($('#totalPrice').html())
+</script>
+{% endblock %}

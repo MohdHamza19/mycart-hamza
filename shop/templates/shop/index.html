@@ -1,0 +1,710 @@
+{% extends 'shop/basic.html' %}
+{% block title%} MyAwesomeCart - Best Ecommerce Website{% endblock %}
+{% block css %}
+
+
+.col-md-3 img
+{
+width: 270px;
+height: 270px;
+}
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+
+.carousel-indicators .active {
+background-color: #007BFF;
+}
+
+.col-md-3 img{
+max-width: 254px;
+height: 250px;
+}
+
+body .carousel-indicator li{
+background-color: blue;
+}
+
+body .carousel-indicators{
+bottom: -40px;
+}
+
+.carousel-indicators li {
+background-color: #7270fc;
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: rgb(0,123,255);
+}
+
+<!--.carousel-control-prev,-->
+<!--.carousel-control-next{-->
+<!--top: auto;-->
+<!--bottom: auto;-->
+<!--padding-top: 222px;-->
+<!--}-->
+
+.pr{
+top: auto;
+bottom: auto;
+padding-top: 222px;
+}
+
+.ne{
+top: auto;
+bottom: auto;
+padding-top: 222px;
+}
+<!--.fuk-->
+<!--{-->
+<!--    top:15%;-->
+<!--}-->
+
+body .k
+{
+    background-color: rgba(0, 0, 0, 0);
+    padding: 15% 15%;
+}
+
+.k{
+    background-color: rgb(255, 0, 0);
+}
+
+<!--body .no-padding{-->
+<!--padding-left: 0,-->
+<!--padding-right: 0;-->
+<!--}-->
+body{
+padding-top : 105px;
+}
+
+
+
+@media (max-width: 991px)
+{
+    body
+    {
+        padding-top:85px;
+}
+}
+
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:115px;
+}
+}
+
+<!--5-->
+<!--body .no-padding{-->
+<!--padding-left: 10px;-->
+<!--padding-right: 10px;-->
+<!--}-->
+
+
+<!--4-->
+<!--body {-->
+<!--&lt;!&ndash;                padding-left: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;                padding-right: 20px;&ndash;&gt;-->
+<!--                padding:100px;-->
+<!--            }-->
+
+<!--3-->
+<!--@media (min-width: 992px) {-->
+
+<!--        body {-->
+<!--                padding-left: 20px;-->
+<!--                padding-right: 20px;-->
+<!--            }-->
+<!--}-->
+
+
+
+<!--.fade {-->
+<!--  -webkit-animation-name: fade;-->
+<!--  -webkit-animation-duration: 1.0s;-->
+<!--  animation-name: fade;-->
+<!--  animation-duration: 1.5s;-->
+<!--}-->
+
+
+{% endblock %}
+{% block css2 %}
+
+
+
+
+
+.column1 {
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .column1 {
+        width: 50%;
+        display: block;
+    }
+}
+
+
+.card1 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+ped1 {
+    margin: 0;
+    margin-bottom: 7px;
+}
+
+.hed1 {
+    margin: 0;
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+@media (max-width: 991px) {
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+
+<!--            2-->
+<!--            body {-->
+<!--                padding: 12px;-->
+<!--                padding-top: 70px;-->
+<!--                padding-left: 20px;-->
+<!--                padding-right: 20px;-->
+<!--            }-->
+
+<!--            .navbar-fixed-top,-->
+<!--            .navbar-fixed-bottom,-->
+<!--            .navbar-static-top {-->
+<!--                margin-left: 0;-->
+<!--                margin-right: 0;-->
+<!--                margin-bottom: 0;-->
+<!--            }-->
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 0;
+                margin: 0;
+            }
+
+<!--            1-->
+<!--            body {-->
+<!--                padding: 12px;-->
+<!--            }-->
+
+<!--            .navbar-fixed-top,-->
+<!--            .navbar-fixed-bottom,-->
+<!--            .navbar-static-top {-->
+<!--                margin-left: 0;-->
+<!--                margin-right: 0;-->
+<!--                margin-bottom: 0;-->
+<!--            }-->
+            .car{
+                padding: 30px;
+                padding-top: 0px;
+            }
+        }
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:117px;
+    }
+}
+{% endblock %}
+
+{% block body %}
+{% load static %}
+
+
+    <div id="myCarousel" class="carousel slide ml" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner fade1">
+            <div class="carousel-item active">
+                <a href="/shop/productbycategory/{{categ.0}}"><img src="/media/shop/images/mobban.png" alt="one" style="width:100%;"></a>
+            </div>
+
+            <div class="carousel-item">
+                 <a href="/shop/productbycategory/Vaccum Cleaners"><img src="/media/shop/images/lhome.png" alt="two" style="width:100%;"></a>
+            </div>
+
+            <div class="carousel-item">
+                <a href="/shop/productbycategory/Tables"><img src="/media/shop/images/lfur.png" alt="three" style="width:100%;"></a>
+            </div>
+        </div>
+
+
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev fuk" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon k" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next fuk" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon k" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+<!--Slide for phnoes-->
+    <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner fade1">
+            <div class="carousel-item active">
+                <a href="/shop/productbycategory/{{categ.0}}"><img src="/media/shop/images/mphn.png" alt="one" style="width:100%;"></a>
+            </div>
+
+            <div class="carousel-item">
+                <img src="/media/shop/images/mhom.png" alt="two" style="width:100%;">
+            </div>
+            <div class="carousel-item">
+                <img src="/media/shop/images/mfur.png" alt="three" style="width:100%;">
+            </div>
+        </div>
+
+
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev fuk" href="#myCarousel1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon k" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next fuk" href="#myCarousel1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon k" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+<br>
+
+
+<div class="row mx-2">
+    <div class="col-md-6 col-lg-6 mt-3">
+        <a href="/shop/productbycategory/{{categ.1}}">
+        <img src="/media/shop/images/lp.png" alt="lap" class="rounded-lg" style="width:100%;">
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-6 mt-3">
+        <a href="/shop/productbycategory/{{categ.0}}">
+            <img src="/media/shop/images/mp.png" alt="mob" class="rounded-lg" style="width:100%;">
+        </a>
+    </div>
+</div>
+
+    <div class="row mx-2">
+        <div class="col-md-6 col-lg-3 col-sm-3 col-xs-3 col-6 mt-3 my-2">
+            <a href="/shop/productbycategory/{{categ.3}}">
+            <img src="/media/shop/images/hphones.png" class="img-responsive rounded-lg" width="100%">
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3 col-sm-3 col-xs-3 col-6 mt-3 my-2">
+            <a href="/shop/productbycategory/{{categ.2}}">
+            <img src="/media/shop/images/smw.png" class="img-responsive rounded-lg" width="100%">
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3 col-sm-3 col-xs-3 col-6 mt-3 my-2">
+            <a href="/shop/productbycategory/{{categ.7}}">
+            <img src="/media/shop/images/lmp.jpg" class="img-responsive rounded-lg" width="100%">
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3 col-sm-3 col-xs-3 col-6 mt-3 my-2">
+            <a href="/shop/productbycategory/{{categ.6}}">
+            <img src="/media/shop/images/frige.png" class="img-responsive rounded-lg" width="100%">
+            </a>
+        </div>
+    </div>
+
+<!--experimental-->
+
+<div class="container my-5" id="ha" style="border:0px solid grey;background-color:white;border-radius: 8px;height: 480px;max-width:1190px;">
+    <h3 style="padding-top:12px;padding-left:35px;margin-bottom:0px">New Arrivals - Check out our latest Stuff!</h3>
+    <div class="row ">
+        <div id="demos" class="col carousel slide my-3" data-ride="carousel" style="padding:0">
+            <ul class="carousel-indicators" style="bottom: -45px;">
+                <li data-target="#demos" data-slide-to="0" class="active"></li>
+                <li data-target="#demos" data-slide-to="1"></li>
+            </ul>
+
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for product in prd2 %}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" style="width: 16rem;box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2)">
+<!--                            <img src='/media/{{product.image}}' class="card-img-top image-responsive" alt="...">-->
+                                <a href="/shop/products/{{product.id}}">
+                                    <img class="card-img-top" src='/media/{{product.image}}' alt="Card image cap">
+                                </a>
+<!--                            <div class="card-body">-->
+<!--                                <h6 class="card-title" id="namepr{{product.id}}" style="margin:3px; text-align:left">{{product.product_name|slice:"0:23"}}{% if product.product_name|length > 23 %}...{% endif %}</h6>-->
+<!--                                <p class="card-text" style="margin: 0">{{product.desc|slice:"0:20"}}{% if product.desc|length > 20 %}...{% endif %}<br>M.R.P <del>₹{{product.cutprice}}</del><br></p>-->
+<!--                                <h6 class="card-title">₹ <span id="pricepr{{product.id}}">{{product.price}} <span id="savepr{{product.id}}"><i style="color:#00A100"> Save ₹ {{product.you_save}}</i></span></span></h6>-->
+<!--                                <span id="divpr{{product.id}}" class="divpr">-->
+<!--                                    <button id="pr{{product.id}}" class="btn btn-primary cart">Add To Cart</button>-->
+<!--                                </span>-->
+<!--                                <a href="/shop/products/{{product.id}}">-->
+<!--                                    <button id="qv{{product.id}}" class="btn btn-primary cart">QuickView</button>-->
+<!--                                </a>-->
+<!--                            </div>-->
+                            <div class="card-body" style="padding-bottom:5px">
+                                <h5 class="card-title" style="margin-bottom:5px"><a href="/shop/products/{{product.id}}">{{product.product_name|slice:"0:18"}}{% if product.product_name|length > 18 %}...{% endif %}</a></h5>
+                                <p class="card-text" style="margin: 0;font-size:16px;font-family: 'Barlow', sans-serif;">{{product.desc|slice:"0:22"}}{% if product.desc|length > 22 %}...{% endif %}<br>M.R.P <del>₹{{product.cutprice}}</del></p>
+                                <h6 class="card-title">₹ <span id="pricepr{{product.id}}">{{product.price}} <span id="savepr{{product.id}}"><i style="color:#00A100"> Save ₹{{product.you_save}}</i></span></span></h6>
+                        </div>
+                        </div>
+                    </div>
+                {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- left and right controls for the slide -->
+            <a class="carousel-control-prev pr" href="#demos" data-slide="prev" style="width:auto;top:200px;right:1140px;padding:0;position: absolute;">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next ne" href="#demos" data-slide="next" style="width:auto;top:200px;left:1140px;padding:0;position: absolute;">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+    <br>
+</div>
+
+<!--end experiment-->
+
+
+<!--EXPERIMENT 2-->
+<!--<div class="jumbotron" style="margin-top:-60px;background-color:#rgb(243,238,238) !important">-->
+
+<div class="row" id="hb">
+        <div class="col" style="padding:55px;padding-top:30px">
+            <h3 style="margin-bottom:-8px">New Arrivals</h3>
+            <div class="row">
+            {% for i in prd3 %}
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 mt-3 car" style="padding:2vw">
+                    <a href="/shop/products/{{i.id}}">
+                    <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                        <a href="/shop/products/{{i.id}}">
+                        <img class="card-img-top" src='/media/{{i.image}}' alt="Card image cap">
+                        </a>
+                        <div class="card-body" style="padding:10px;padding-bottom:5px">
+                            <h5 class="card-title" style="margin-bottom:5px;font-size:2.5vw"><a href="/shop/products/{{i.id}}">{{i.product_name|slice:"0:10"}}{% if i.product_name|length > 10 %}..{% endif %}</a></h5>
+                            <p class="card-text" style="margin: 0;font-size:2vw">M.R.P <del>₹{{i.cutprice}}</del><br><b>₹{{i.price}}</b><span><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></p>
+<!--                            <p class="card-text" style="margin: 0">M.R.P <del>₹{{i.cutprice}}</del><br><b>₹{{i.price}}</b><span><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></p>-->
+<!--                            <h6 class="card-title">₹ <span id="pricepr{{i.id}}">{{i.price}} <span id="savepr{{i.id}}"><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></span></h6>-->
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+<div class="row" id="hc">
+        <div class="col" style="padding:70px;">
+            <h3>New Arrivals!</h3>
+            <div class="row">
+            {% for i in prd3 %}
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 mt-3 car" style="padding:3.5vw">
+                    <a href="/shop/products/{{i.id}}">
+                    <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                        <a href="/shop/products/{{i.id}}">
+                        <img class="card-img-top" src='/media/{{i.image}}' alt="Card image cap">
+                        </a>
+                        <div class="card-body" style="padding:10px;padding-bottom:5px">
+                            <h5 class="card-title" style="margin-bottom:5px;font-size:2.1vw"><a href="/shop/products/{{i.id}}">{{i.product_name|slice:"0:10"}}{% if i.product_name|length > 10 %}..{% endif %}</a></h5>
+                            <p class="card-text" style="margin: 0;font-size:1.5vw">M.R.P <del>₹{{i.cutprice}}</del><br><b>₹{{i.price}}</b><span><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></p>
+<!--                            <p class="card-text" style="margin: 0">M.R.P <del>₹{{i.cutprice}}</del><br><b>₹{{i.price}}</b><span><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></p>-->
+<!--                            <h6 class="card-title">₹ <span id="pricepr{{i.id}}">{{i.price}} <span id="savepr{{i.id}}"><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></span></h6>-->
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+
+
+<!--END EXPERIMENT 2-->
+<!--<div class="container">-->
+<!--    &lt;!&ndash;Slideshow starts here &ndash;&gt;-->
+<!--    {% for product, range, nSlides in allProds %}-->
+<!--    <h3 class="my-4">Flash Sale On {{product.0.category}} - Recommended Items</h3>-->
+<!--    <div class="row">-->
+<!--        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel" style="padding:0">-->
+<!--            <ul class="carousel-indicators">-->
+<!--                <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>-->
+<!--                {% for i in range %}-->
+<!--                <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
+<!--            <div class="container carousel-inner no-padding">-->
+<!--                <div class="carousel-item active">-->
+<!--                    {% for i in product %}-->
+<!--                    <div class="col-xs-3 col-sm-3 col-md-3">-->
+<!--                        <div class="card align-items-center" style="width: 16rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">-->
+<!--                            <img src='/media/{{i.image}}' class="card-img-top image-responsive" alt="...">-->
+<!--                            <div class="card-body">-->
+<!--                                <h6 class="card-title" id="namepr{{i.id}}" style="margin:3px; text-align:left">{{i.product_name|slice:"0:23"}}{% if i.product_name|length > 23 %}...{% endif %}</h6>-->
+<!--                                <p class="card-text" style="margin: 0">{{i.desc|slice:"0:20"}}{% if i.desc|length > 20 %}...{% endif %}<br>M.R.P <del>₹{{i.cutprice}}</del><br></p>-->
+<!--                                <h6 class="card-title">₹ <span id="pricepr{{i.id}}">{{i.price}} <span id="savepr{{i.id}}"><i style="color:#00A100"> Save ₹ {{i.you_save}}</i></span></span></h6>-->
+<!--                                <span id="divpr{{i.id}}" class="divpr">-->
+<!--                                    <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>-->
+<!--                                </span>-->
+<!--                                <a href="/shop/products/{{i.id}}">-->
+<!--                                    <button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}-->
+<!--                </div>-->
+<!--                <div class="carousel-item">-->
+<!--                    {% endif %}-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; left and right controls for the slide &ndash;&gt;-->
+<!--        <a class="carousel-control-prev pr" href="#demo{{forloop.counter}}" data-slide="prev">-->
+<!--            <span class="carousel-control-prev-icon"></span>-->
+<!--        </a>-->
+<!--        <a class="carousel-control-next ne" href="#demo{{forloop.counter}}" data-slide="next">-->
+<!--            <span class="carousel-control-next-icon"></span>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+
+{% endblock %}
+{% block js %}
+<script>
+    console.log(screen.width)
+    if (screen.width < 1200) {
+<!--        $('.h1.hidden').removeClass('hidden');-->
+    document.getElementById("ha").style.display = "none";
+    }
+    if (screen.width > 750) {
+    document.getElementById("hb").style.display = "none";
+    }
+    if (screen.width <=750 || screen.width >= 1200) {
+    document.getElementById("hc").style.display = "none";
+    }
+
+    if (screen.width > 640) {
+    document.getElementById("myCarousel1").style.display = "none";
+    }
+    if (screen.width <= 640) {
+    document.getElementById("myCarousel").style.display = "none";
+    }
+
+
+
+
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+        var ite = 1;
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        ite = JSON.parse(localStorage.getItem('ite'));
+        updateCart(cart);
+    }
+
+    $('#popcart1').popover();
+
+    mail = JSON.parse(localStorage.getItem('mail'));
+
+    if (localStorage.getItem('mail') == null){
+<!--        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>" style="size:2px">-->
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+    else{
+        pops='<a href="/shop/yourOrders">Your Orders</a><br><a onclick="clearmail()" href="/shop/signout">Sign out</a>'
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+    function clearmail()
+    {
+        mail = null
+        localStorage.setItem('mail', null);
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+    // If the add to cart button is clicked, add/increment the item
+
+<!--    $('.divpr').on('click', 'button.cart', function() {-->
+<!--        var idstr = this.id.toString();-->
+<!--        if (cart[idstr] != undefined) {-->
+<!--            qty = cart[idstr][0] + 1;-->
+<!--        } else {-->
+<!--            qty = 1;-->
+<!--            name = document.getElementById('name' + idstr).innerHTML;-->
+<!--            price = document.getElementById('price' + idstr).innerHTML;-->
+<!--            cart[idstr] = [qty, name, parseInt(price)];-->
+
+<!--        }-->
+<!--        updateCart(cart);-->
+
+<!--    });-->
+
+
+    $('.divpr').on('click', 'button.cart', function(){
+    var idstr = this.id.toString();
+    if (cart[idstr] != undefined) {
+        qty = cart[idstr][0] + 1;
+    } else {
+        qty = 1;
+        item = ('item:' + ite);
+        name = document.getElementById('name'+idstr).innerHTML;
+        console.log(name)
+        price = document.getElementById('price'+idstr).innerHTML;
+        console.log(price)
+        cart[idstr] = [qty, name, parseInt(price), item];
+        ite = ite + 1;
+    }
+    updateCart(cart);
+    });
+
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+
+<!--    updatePopover(cart);-->
+
+
+
+
+    function updatePopover(cart) {
+        var popStr = "";
+        popStr = popStr + "<div><h5  style='text-align: center'>Your Cart</h5><hr></div><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart)
+        {
+            popStr = popStr + "<b>" + i + "</b>. ";
+            if ((cart[item][1]).length > 14)
+            {
+                            popStr = popStr + (cart[item][1]).slice(0, 14) + "... | Qty: " + cart[item][0] + '<br>';
+            } else if ((cart[item][1]).length <= 14)
+            {
+                            popStr = popStr + (cart[item][1]) + " | Qty: " + cart[item][0] + '<br>';
+            }
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+<!--        if (document.getElementById('cart').innerHTML != 0){-->
+<!--            $('#popcart').popover('show');          -->
+<!--        }-->
+
+        if (screen.width > 991) {
+            $('#popcart').popover('show');
+<!--            tmp = setTimeout(function(){$('.popover').popover('hide')}, 1700);-->
+        } else {
+            $('#popcart').popover('hide');
+        }
+        if (screen.width > 991) {
+            $('#popcart').popover('show');
+            if (document.getElementById('cart').innerHTML != 0){
+                $('#popcart').popover('show');
+                tmp = setTimeout(function(){$('#popcart').popover('hide')}, 1700);
+            }
+            else
+            {
+                $('#popcart').popover('hide');
+            }
+        }
+    }
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+<!--        for (var item in cart) {-->
+<!--            document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'-->
+<!--        }-->
+<!--        if (('div' + item) == ('divpr{{product.id}}')) {-->
+<!--                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart" onclick="myFun()">Add To Cart</button>'-->
+<!--        }-->
+        localStorage.clear();
+        cart = {};
+        ite = 1;
+        updateCart(cart);
+        $('#popcart').popover('hide');
+    }
+
+    function updateCart(cart) {
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item][0];
+            if (('div' + item) == ('divpr{{i.id}}')) {
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+            }
+<!--            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";-->
+
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('ite', JSON.stringify(ite));
+        document.getElementById('cart').innerHTML = sum;
+        //<!--    console.log(cart);-->
+        updatePopover(cart);        
+//        $('#popcart').popover('show');
+    }
+
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        if (cart['pr' + a][0] == 0) {
+            document.getElementById('divpr' + a).innerHTML = '<button id="pr' + a + '" class="btn btn-primary cart">Add to Cart</button>';
+            delete cart['pr' + a];
+            ite = ite-1;
+        } else {
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        }
+        updateCart(cart);
+
+    });
+
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+
+
+
+</script>
+{% endblock %}

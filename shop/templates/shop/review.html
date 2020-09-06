@@ -1,0 +1,192 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Review {% endblock %}
+{% block css %}
+
+
+{% endblock %}
+{% block css2 %}
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:100px;
+    }
+}
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <ul class="list-group">
+        <li class="list-group-item">Review for: {{product.product_name}}</li>
+    </ul>
+</div>
+
+<form method="post" action="/shop/review/{{product.id}}">{% csrf_token %}
+    <input type="hidden" name="revid" id="revid">
+    <div class="form-row mt-4 mx-2">
+        <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email (Used to purchase item)</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="rating">Your rating</label>
+        <select class="form-control" id="rating" name="rating" required>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="review">Review</label>
+        <textarea class="form-control" id="review" name="review" rows="3" required></textarea>
+    </div>
+    <div class="form-group col-md-6">
+    <button type="submit" class="btn btn-primary mx-2">Submit Review</button>
+    </div>
+</form>
+
+
+{% endblock %}
+{% block js %}
+<script>
+$('#revid').val({{product.id}});
+<!--console.log(document.getElementById("revid").value);-->
+
+
+
+<!--function updateCart(cart) {-->
+<!--        var sum = 0;-->
+<!--        for (var item in cart) {-->
+<!--            sum = sum + cart[item][0];-->
+<!--&lt;!&ndash;            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";&ndash;&gt;-->
+
+<!--        }-->
+<!--        localStorage.setItem('cart', JSON.stringify(cart));-->
+<!--        document.getElementById('cart').innerHTML = sum;-->
+<!--        //&lt;!&ndash;    console.log(cart);&ndash;&gt;-->
+<!--        updatePopover(cart);-->
+<!--//        $('#popcart').popover('show');-->
+<!--    }-->
+
+
+
+
+
+// Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        console.log(cart);
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item][0];
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        //        console.log(cart);
+<!--        updatePopover(cart);-->
+    }
+
+
+
+
+<!--    // If the add to cart button is clicked, add/increment the item-->
+<!--    //$('.cart').click(function() {-->
+<!--    $('.divpr').on('click', 'button.cart', function() {-->
+<!--        var idstr = this.id.toString();-->
+<!--        if (cart[idstr] != undefined) {-->
+<!--            qty = cart[idstr][0] + 1;-->
+<!--        } else {-->
+<!--            qty = 1;-->
+<!--            name = document.getElementById('name' + idstr).innerHTML;-->
+<!--            cart[idstr] = [qty, name];-->
+<!--        }-->
+<!--        updateCart(cart);-->
+<!--    });-->
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+
+    function updatePopover(cart) {
+        //        console.log('We are inside updatePopover');
+        var popStr = "";
+        popStr = popStr + "<div> <h5 style='display: flex; justify-content: center;'>Your Cart</h5><hr></div><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+                        if ((cart[item][1]).length > 17) {
+                            popStr = popStr + (cart[item][1]).slice(0, 19) + "... | Qty: " + cart[item][0] + '<br>';
+                        } else if ((cart[item][1]).length < 17) {
+                            popStr = popStr + (cart[item][1]).slice(0, 19) + " | Qty: " + cart[item][0] + '<br>';
+                        }
+            console.log((cart[item][1]).length);
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+        if (screen.width > 1691) {
+            $('#popcart').popover('show');
+            tmp = setTimeout(function(){$('.popover').popover('hide')}, 1700);
+        } else {
+            $('#popcart').popover('hide');
+        }
+        if (screen.width > 1691) {
+            $('#popcart').popover('show');
+            if (document.getElementById('cart').innerHTML != 0){
+                $('#popcart').popover('show');
+                tmp = setTimeout(function(){$('.popover').popover('hide')}, 1700);
+            }
+            else
+            {
+                $('#popcart').popover('hide');
+            }
+        }
+    }
+
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            if (('div' + item) == ('divpr{{product.id}}')){
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+            }
+        }
+        localStorage.clear();
+        cart = {};
+    }
+
+<!--    function updateCart(cart) {-->
+<!--        var sum = 0;-->
+<!--        for (var item in cart) {-->
+<!--            sum = sum + cart[item][0];-->
+<!--            //            console.log('div' + item);-->
+<!--            if (('div' + item) == ('divpr{{product.id}}')) {-->
+<!--                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";-->
+<!--            }-->
+<!--            //            else-->
+<!--            //            {-->
+<!--            //                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";-->
+<!--            //            }-->
+<!--        }-->
+<!--        localStorage.setItem('cart', JSON.stringify(cart));-->
+<!--        document.getElementById('cart').innerHTML = sum;-->
+<!--        //        console.log(cart);-->
+<!--        updatePopover(cart);-->
+<!--    }-->
+
+{% if thank %}
+        alert('Thank you for your review! It has been submitted for moderation.');
+        document.location = "/shop";
+{% endif %}
+</script>
+
+{% endblock %}

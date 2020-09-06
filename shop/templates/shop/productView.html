@@ -1,0 +1,990 @@
+{% extends 'shop/basic.html' %}
+{% block link2 %}
+
+{% endblock %}
+{% block title %} Product - {{product.product_name}} {% endblock %}
+{% block css %}
+<!--.boxy{-->
+<!--border:2px solid black-->
+<!--}-->
+.vertical {
+border-right: 1px solid lightgrey;
+display:flex;
+height: 350px;
+position:absolute;
+left: 50%;
+}
+.vert{
+border-left: 1px solid lightgrey;
+height:auto;
+}
+.checked {
+color: blue;
+}
+body {
+padding-top: 65px;
+}
+#arr{
+margin:10px;
+padding:10px;
+}
+#arr p::before {
+content: '➦';
+color: #696969;
+position: relative;
+left: 0;
+}
+
+.collapsible {
+background-color: #6C757D;
+color: white;
+cursor: pointer;
+padding: 11px;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+font-size: 15px;
+border-radius: 5px;
+}
+
+.collapsible:hover {
+background-color: #555;
+}
+
+.collapsible:active
+{
+background-color: #555;
+}
+
+
+.content {
+padding: 0 18px;
+display: none;
+overflow: hidden;
+background-color: #f1f1f1;
+}
+
+.a.checked {
+color: orange;
+}
+
+
+@media (min-width: 991px)
+{
+body
+{
+padding-top:105px;
+}
+}
+
+@media (max-width: 575px)
+{
+body
+{
+padding-top:115px;
+}
+}
+
+
+* {box-sizing: border-box}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+max-width: 1000px;
+position: relative;
+margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+padding: 16px;
+margin-top: -22px;
+color: white;
+font-weight: bold;
+font-size: 18px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.active, .dot:hover {
+background-color: #717171;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+cursor: pointer;
+height: 15px;
+width: 15px;
+margin: 0 2px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline;
+transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade1 {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.0s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.fades {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 0.3s;
+  animation-name: fade;
+  animation-duration: 0.3s;
+}
+<!--.fadeout {-->
+<!--  -webkit-animation-name: fadeout;-->
+<!--  -webkit-animation-duration: 1.0s;-->
+<!--  animation-name: fadeout;-->
+<!--  animation-duration: 1.5s;-->
+<!--}-->
+
+@-webkit-keyframes fade {
+from {opacity: .4}
+to {opacity: 1}
+}
+
+@keyframes fade {
+from {opacity: .4}
+to {opacity: 1}
+}
+
+
+{% endblock %}
+
+
+{% block css2 %}
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:100px;
+    }
+}
+
+{% endblock %}
+{% block body %}
+{% load static %}
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!--            <img src="/media/{{product.image}}" width="450px" height="420px" class="image-responsive img-thumbnail">-->
+            {% if num == 0 %}
+            <div class="slideshow-container">
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">1 / 1</div>
+                    <img src="/media/{{product.image}}" class="image-responsive" style="width:100%">
+<!--                    <div class="text">Caption Text</div>-->
+                </div>
+
+<!--                <div class="mySlides fade1">-->
+<!--                    <div class="numbertext">2 / 3</div>-->
+<!--                    <img src="/media/{{product.image2}}" class="image-responsive img-thumbnail" style="width:100%">-->
+<!--                </div>-->
+
+<!--                <div class="mySlides fade1">-->
+<!--                    <div class="numbertext">3 / 3</div>-->
+<!--                    <img src="/media/{{product.image}}" class="image-responsive img-thumbnail" style="width:100%">-->
+<!--                </div>-->
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"><img src="/media/{{product.image}}" class="image-responsive" style="width:15%"></span>
+<!--                <span class="dot" onclick="currentSlide(2)"></span>-->
+<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
+            </div>
+            {% endif %}
+
+
+
+            {% if num == 1 %}
+            <div class="slideshow-container">
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">1 / 1</div>
+                    <img src="/media/{{product.image}}" class="image-responsive img-thumbnail" style="width:100%">
+<!--                    <div class="text">Caption Text</div>-->
+                </div>
+
+<!--                <div class="mySlides fade1">-->
+<!--                    <div class="numbertext">2 / 3</div>-->
+<!--                    <img src="/media/{{product.image2}}" class="image-responsive img-thumbnail" style="width:100%">-->
+<!--                </div>-->
+
+<!--                <div class="mySlides fade1">-->
+<!--                    <div class="numbertext">3 / 3</div>-->
+<!--                    <img src="/media/{{product.image}}" class="image-responsive img-thumbnail" style="width:100%">-->
+<!--                </div>-->
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"><img src="/media/{{product.image}}" class="image-responsive" style="width:15%"></span>
+<!--                <span class="dot" onclick="currentSlide(2)"></span>-->
+<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
+            </div>
+            {% endif %}
+
+
+            {% if num == 2 %}
+            <div class="slideshow-container">
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">1 / 2</div>
+                    <img src="/media/{{product.image}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Text</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">2 / 2</div>
+                    <img src="/media/{{product.image2}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Two</div>-->
+                </div>
+
+<!--                <div class="mySlides fade1">-->
+<!--                    <div class="numbertext">3 / 3</div>-->
+<!--                    <img src="/media/{{product.image}}" class="image-responsive img-thumbnail" style="width:100%">-->
+<!--                </div>-->
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"><img src="/media/{{product.image}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(2)"><img src="/media/{{product.image2}}" class="image-responsive" style="width:15%"></span>
+<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
+            </div>
+            {% endif %}
+
+            {% if num == 3 %}
+            <div class="slideshow-container">
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="/media/{{product.image}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Text</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="/media/{{product.image2}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Two</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="/media/{{product.image3}}" class="image-responsive " style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"><img src="/media/{{product.image}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(2)"><img src="/media/{{product.image2}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(3)"><img src="/media/{{product.image3}}" class="image-responsive" style="width:15%"></span>
+            </div>
+            {% endif %}
+
+            {% if num == 4 %}
+            <div class="slideshow-container">
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">1 / 4</div>
+                    <img src="/media/{{product.image}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Text</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">2 / 4</div>
+                    <img src="/media/{{product.image2}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Two</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">3 / 4</div>
+                    <img src="/media/{{product.image3}}" class="image-responsive " style="width:100%">
+                </div>
+                <div class="mySlides fade1">
+                    <div class="numbertext">4 / 4</div>
+                    <img src="/media/{{product.image4}}" class="image-responsive " style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"><img src="/media/{{product.image}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(2)"><img src="/media/{{product.image2}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(3)"><img src="/media/{{product.image3}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(4)"><img src="/media/{{product.image4}}" class="image-responsive" style="width:15%"></span>
+<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
+            </div>
+            {% endif %}
+
+            {% if num == 5 %}
+            <div class="slideshow-container">
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">1 / 5</div>
+                    <img src="/media/{{product.image}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Text</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">2 / 5</div>
+                    <img src="/media/{{product.image2}}" class="image-responsive " style="width:100%">
+<!--                    <div class="text">Caption Two</div>-->
+                </div>
+
+                <div class="mySlides fade1">
+                    <div class="numbertext">3 / 5</div>
+                    <img src="/media/{{product.image3}}" class="image-responsive " style="width:100%">
+                </div>
+                <div class="mySlides fade1">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="/media/{{product.image4}}" class="image-responsive " style="width:100%">
+                </div>
+                <div class="mySlides fade1">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="/media/{{product.image5}}" class="image-responsive " style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"><img src="/media/{{product.image}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(2)"><img src="/media/{{product.image2}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(3)"><img src="/media/{{product.image3}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(4)"><img src="/media/{{product.image4}}" class="image-responsive" style="width:15%"></span>
+                <span class="dot" onclick="currentSlide(5)"><img src="/media/{{product.image5}}" class="image-responsive" style="width:15%"></span>
+<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
+            </div>
+            {% endif %}
+
+
+            <br>
+
+            <!--            <div class="slider" >-->
+            <!--                <div><img src="/media/{{product.image}}" width="450px" height="420px" class="image-responsive img-thumbnail"></div>-->
+            <!--                <div>I am another slide.</div>-->
+            <!--            </div>-->
+
+            <!--            <div data-slider-id="nskgau"></div>-->
+            <!--            <script type="text/javascript" src="https://app.sliderui.com/sliders/nskgau.js"></script>-->
+
+
+            <!--            <img src="file:/C:/Users/USER/Downloads/camera-Flash.jpeg" class="image-responsive">-->
+            <!--            <div class="row">-->
+            <!--                <button class="btn btn-primary mx-3 my-2">Buy Now!</button>-->
+            <!--                <button class="btn btn-primary my-2">Add to Cart</button>-->
+            <!--            </div>-->
+        </div>
+        <!--        <div class = "vertical"></div>-->
+
+        <div class="col-md-6 col-sm-12 boxy vert">
+
+            <div class="row">
+                <div class="col-md-12 mx-2">
+                    <h1 id="namepr{{product.id}}">{{product.product_name}}</h1>
+<!--                    <h1 >{{wa}}</h1>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mx-2">
+<!--                    <p><b>Description:</b></p><p class="description">{{product.desc}}</p>-->
+                    <p><b>Description:</b> {{product.desc}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mx-2">
+                    {% if wa == 1 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+<!--                        <span class="fa fa-star checked"></span>-->
+<!--                        <span class="fa fa-star checked"></span>-->
+<!--                        <span class="fa fa-star "></span>-->
+<!--                        <span class="fa fa-star "></span>-->
+<!--                        <span class="fa fa-star-half-o checked"></span>-->
+
+                    {% elif wa > 1 and wa < 2 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-half-o checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+                    {% elif wa == 2 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+<!--                        <span class="fa fa-star-half-o checked"></span>-->
+
+                    {% elif wa > 2 and wa < 3 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-half-o checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+                    {% elif wa == 3 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+
+                    {% elif wa > 3 and wa < 4 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-half-o checked"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+<!--                        <span class="fa fa-star "></span>-->
+<!--                        <span class="fa fa-star-half-o checked"></span>-->
+                    {% elif wa == 4 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+
+                    {% elif wa > 4 and wa < 5 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-half-o checked"></span>
+                        <span class="fa fa-star-o"></span> <a href="#reviewz"> Read review(s)</a>
+                    {% elif wa == 5 %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span> <a href="#reviewz"> Read review(s)</a>
+
+                    {% else %}
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                        (No ratings yet)
+                    {% endif %}
+<!--                    <span class="badge badge-success"> 61</span>-->
+
+                    <hr>
+                    {% if product.stock > 5 %}<h4 style="color:#6E9171">In Stock</h4>{% endif %}
+                    {% if product.stock <= 0 %}<h4 style="color:#FF0000">Out of Stock!</h4>{% endif %}
+                    {% if product.stock == 1 %}<h4 style="color:#ff7518">In Stock... 1 product(s) remaining</h4>{% endif %}
+                    {% if product.stock == 2 %}<h4 style="color:#ff7518">In Stock... 2 products remaining</h4>{% endif %}
+                    {% if product.stock == 3 %}<h4 style="color:#ff7518">In Stock... 3 products remaining</h4>{% endif %}
+                    {% if product.stock == 4 %}<h4 style="color:#ff7518">In Stock... 4 products remaining</h4>{% endif %}
+                    {% if product.stock == 5 %}<h4 style="color:#ff7518">In Stock... 5 products remaining</h4>{% endif %}
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-8 col-12">
+                    <div class="container">
+                        <div class="card-deck mb-3 text-center" style="box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2)">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-header">
+                                    <h4 class="my-0 font-weight-normal">Purchase!</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title pricing-card-title"><i>M.R.P:
+                                        <del>Rs. {{product.cutprice}}</del>
+                                    </i></h4>
+                                    <h1 class="card-title pricing-card-title">Rs. <span id="pricepr{{product.id}}">{{product.price}}</span>
+                                    </h1>
+                                    <h5 style="padding:0;margin:0"><span id="savepr{{product.id}}"><i
+                                            style="color:#00A100"> You Save ₹ {{product.you_save}}</i></span></h5>
+                                    <ul class="list-unstyled mt-1 mb-4">
+                                        <li style="color: #00A651"><b>FREE delivery</b></li>
+                                        <li>Fast Shipping</li>
+                                    </ul>
+                                    <span id="divpr{{product.id}}" class="divpr">
+                                        {% if product.stock >= 1 %}
+                                        <button id="pr{{product.id}}" class="btn btn-primary cart" onclick="myFun()">Add To Cart</button>
+                                        {% endif %}
+                                        {% if product.stock < 1 %}
+                                        <button id="prd{{product.id}}" class="btn btn-primary cart" onclick="myFun()" disabled>Add To Cart</button>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-8 col-12 d-flex justify-content-between">
+                    <!-- Want to place arrow where bullet points are  -->
+                    <ul id="arr">
+                        <p> 7 Days Replacement</p>
+                        <p> No-Contact Delivery</p>
+                        <p> Delivered by India Post</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/shop/review/{{product.id}}">
+        <h5 style="display:inline">Already Purchased? Write a review</h5>
+        <br>
+    </a>
+
+
+
+    <button type="button" class="collapsible mt-3" id="reviewz">Reviews (<span id="revno">0</span>)</button>
+    <div class="container content" style="padding-top: 25px">
+        {% for i in res %}
+        {% if i.1 == 1 %}
+        <div class="container">
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span> <b style="font-family: 'Noto Sans JP', sans-serif;">- Very bad</b><br>
+        </div>
+        {% endif %}
+        {% if i.1 == 2 %}
+        <div class="container">
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span> <b style="font-family: 'Noto Sans JP', sans-serif;">- Bad</b><br>
+        </div>
+        {% endif %}
+        {% if i.1 == 3 %}
+        <div class="container">
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span> <b style="font-family: 'Noto Sans JP', sans-serif;">- Good</b><br>
+        </div>
+        {% endif %}
+        {% if i.1 == 4 %}
+        <div class="container">
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star"></span> <b style="font-family: 'Noto Sans JP', sans-serif;">- Very Good!</b><br>
+        </div>
+        {% endif %}
+        {% if i.1 == 5 %}
+        <div class="container">
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span>
+            <span class="fa fa-star a checked"></span><b style="font-family: 'Noto Sans JP', sans-serif;"> - Excellent!!</b><br>
+        </div>
+        {% endif %}
+
+        <div class="container mt-2" style="font-size:18px;font-family: 'Noto Sans JP', sans-serif;">{{i.0}}</div>
+        <div class="container mt-1" style="font-size:12px;color:#878787">{{i.2}}, {{i.3}} <b>✓ Certified Buyer</b></div>
+        <hr>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+
+<!--
+<script>
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+        updateCart(cart);
+    }
+    // If the add to cart button is clicked, add/increment the item
+    //    $('.cart').click(function() {
+    $('.divpr').on('click', 'button.cart', function() {
+        var idstr = this.id.toString();
+        if (cart[idstr] != undefined) {
+            cart[idstr] = cart[idstr] + 1;
+        } else {
+            cart[idstr] = 1;
+        }
+        updateCart(cart);
+
+    });
+    //Add Popover to cart
+    $('#popcart').popover(); 
+//    document.getElementById("popcart").setAttribute('data-content', '<h5>Your Cart</h5>');
+
+    updatePopover(cart);
+
+    function updatePopover(cart) {
+        var popStr = "";
+        popStr = popStr + "<h5>Your Cart</h5> <div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+//            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 10) + "... Qty: " + cart[item] + '<br>';
+//            i = i + 1;
+            if (document.getElementById('name' + item).innerHTML.length>17){
+                popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 17) + "... | Qty: " + cart[item][0] + '<br>';
+            }
+            else if (document.getElementById('name' + item).innerHTML.length<17){
+                popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 17) + " | Qty: " + cart[item][0] + '<br>';
+            }
+//            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '<br>';
+            i = i + 1;
+        }
+        popStr = popStr + "</div>"
+        document.getElementById("popcart").setAttribute('data-content', popStr);
+//        $('#popcart').popover('show');
+        if (screen.width>991)
+        {
+            $('#popcart').popover('show');
+        }
+        else
+        {
+            $('#popcart').popover();
+        }
+    }
+
+
+
+//    function updateCart(cart) {
+//        var sum = 0;
+//        for (var item in cart) {
+//            sum = sum + cart[item];
+//            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+//        }
+//        localStorage.setItem('cart', JSON.stringify(cart));
+//        document.getElementById('cart').innerHTML = sum;
+//        console.log(cart);
+//        updatePopover(cart);
+//    }
+    function updateCart(cart) {
+    var sum = 0;
+    for (var item in cart) {
+        sum = sum + cart[item];
+        document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+    console.log(cart);
+    updatePopover(cart);
+}
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a] = cart['pr' + a] - 1;
+        cart['pr' + a] = Math.max(0, cart['pr' + a]);
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a];
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a] = cart['pr' + a] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a];
+        updateCart(cart);
+    });
+
+</script>
+-->
+
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">-->
+<!--    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>-->
+
+
+<script>
+
+
+    $('#popcart1').popover();
+
+    mail = JSON.parse(localStorage.getItem('mail'));
+
+    if (localStorage.getItem('mail') == null){
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+    else{
+        pops='<a href="/shop/yourOrders">Your Orders</a><br><a onclick="clearmail()" href="/shop/signout">Sign out</a>'
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+    function clearmail()
+    {
+        mail = null
+        localStorage.setItem('mail', null);
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+
+
+
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+        var ite=1;
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        ite = JSON.parse(localStorage.getItem('ite'));
+        updateCart(cart);
+    }
+
+    // If the add to cart button is clicked, add/increment the item
+
+
+    $('.divpr').on('click', 'button.cart', function() {
+        var idstr = this.id.toString();
+        if (cart[idstr] != undefined) {
+            qty = cart[idstr][0] + 1;
+        } else {
+            qty = 1;
+            item = ('item:' + ite);
+            name = document.getElementById('name'+idstr).innerHTML;
+            console.log(name)
+            price = document.getElementById('price'+idstr).innerHTML;
+            console.log(price)
+            cart[idstr] = [qty, name, parseInt(price), item];
+            ite = ite + 1;
+        }
+        updateCart(cart);
+    });
+
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+
+    function updatePopover(cart) {
+        var popStr = "";
+        popStr = popStr + "<div> <h5 style='display: flex; justify-content: center;'>Your Cart</h5><hr></div><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+            if ((cart[item][1]).length > 14) {
+                popStr = popStr + (cart[item][1]).slice(0, 14) + "... | Qty: " + cart[item][0] + '<br>';
+            } else if ((cart[item][1]).length <= 14) {
+                popStr = popStr + (cart[item][1]) + " | Qty: " + cart[item][0] + '<br>';
+            }
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+        if (screen.width > 991) {
+            $('#popcart').popover('show');
+        } else {
+            $('#popcart').popover();
+        }
+        if (document.getElementById('cart').innerHTML != 0){
+            $('#popcart').popover('show');
+            tmp = setTimeout(function(){$('#popcart').popover('hide')}, 500);
+        }
+        else
+        {
+            $('#popcart').popover('hide');
+        }
+    }
+
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            if (('div' + item) == ('divpr{{product.id}}')) {
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart" onclick="myFun()">Add To Cart</button>'
+
+            }
+        }
+        localStorage.clear();
+        cart = {};
+        ite = 1;
+        updateCart(cart);
+        $('#popcart').popover('hide')
+    }
+
+st={{product.stock}}
+console.log(st);
+
+    function updateCart(cart) {
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item][0];
+            if (('div' + item) == ('divpr{{product.id}}')) {
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus' onclick='myFun()'> + </button>";
+            }
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('ite', JSON.stringify(ite));
+        document.getElementById('cart').innerHTML = sum;
+        updatePopover(cart);
+    }
+    numb=0;
+    function myFun() {
+        numb=numb+1;
+        console.log(numb);
+    };
+
+
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        if (cart['pr' + a][0] == 0) {
+            document.getElementById('divpr' + a).innerHTML = '<button id="pr' + a + '" class="btn btn-primary cart">Add to Cart</button>';
+            delete cart['pr' + a];
+            ite=ite-1;
+        } else {
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        }
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        ab={{ product.stock }}
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        cart['pr' + a][0] = Math.min(ab, cart['pr' + a][0]);
+        cart['pr' + a][0] = Math.min(5, cart['pr' + a][0]);
+        console.log(ab)
+        if (cart['pr' + a][0] >= 6) {
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        }
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+
+
+    var v = 0
+     {% for i in res %}
+        v = v + 1
+     {% endfor %}
+    document.getElementById('revno').innerHTML = v;
+<!--    console.log(v)-->
+
+
+
+
+
+
+</script>
+{% endblock %}

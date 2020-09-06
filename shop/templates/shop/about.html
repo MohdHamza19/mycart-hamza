@@ -1,0 +1,175 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} About Us {% endblock %}
+{% block css %}
+.jumbotron{
+  padding:0;
+}
+{% endblock %}
+{% block css2 %}
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:120px;
+    }
+}
+{% endblock %}
+
+{% block body %}
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">MyCart</h1>
+      <p>MyCart is an Indian e-commerce company based in Gulbarga, Karnataka, India. It was founded by Md Hamza in 2020. The company initially focused on book sales, before expanding into other product categories such as consumer electronics, fashion, home essentials & groceries, and lifestyle products. The service competes primarily with Amazon's Indian subsidiary, and the domestic rival Snapdeal.[8][9] As of March 2017, Flipkart held a 39.5% market share of India's e-commerce industry.[10] Flipkart is significantly dominant in the sale of apparel (a position that was bolstered by its acquisition of Myntra), and was described as being "neck and neck" with Amazon in the sale of electronics and mobile phones.[11] Flipkart also owns PhonePe, a mobile payments service based on the Unified Payments Interface (UPI).</p>
+<!--      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Vision</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Inception</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Team</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+{% endblock %}
+
+{% block js %}
+<script>
+      $('#popcart1').popover();
+
+    mail = JSON.parse(localStorage.getItem('mail'));
+
+    if (localStorage.getItem('mail') == null){
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+    else{
+        pops='<a href="/shop/yourOrders">Your Orders</a><br><a onclick="clearmail()" href="/shop/signout">Sign out</a>'
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+    function clearmail()
+    {
+        mail = null
+        localStorage.setItem('mail', null);
+        pops="<a href='/shop/login'><button class='btn btn-primary'>Log-in</button></a><a href='/shop/signup'> <button class='btn btn-primary'>Signup</button></a>"
+        document.getElementById('popcart1').setAttribute('data-content', pops);
+    }
+
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        updateCart(cart);
+    }
+    // If the add to cart button is clicked, add/increment the item
+    //$('.cart').click(function() {
+    $('.divpr').on('click', 'button.cart', function() {
+        var idstr = this.id.toString();
+        if (cart[idstr] != undefined) {
+            qty = cart[idstr][0] + 1;
+        } else {
+            qty = 1;
+            name = document.getElementById('name'+idstr).innerHTML;
+            console.log(name)
+            price = document.getElementById('price'+idstr).innerHTML;
+            console.log(price)
+            cart[idstr] = [qty, name, parseInt(price)];
+        }
+        updateCart(cart);
+    });
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+
+    function updatePopover(cart) {
+        //        console.log('We are inside updatePopover');
+        var popStr = "";
+        popStr = popStr + "<div> <h5 style='text-align: center'>Your Cart</h5><hr></div><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+            if ((cart[item][1]).length > 14) {
+                popStr = popStr + (cart[item][1]).slice(0, 14) + "... | Qty: " + cart[item][0] + '<br>';
+            } else if ((cart[item][1]).length <= 14) {
+                popStr = popStr + (cart[item][1]) + " | Qty: " + cart[item][0] + '<br>';
+            }
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>"
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+    }
+
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            if (('div' + item) == ('divpr{{product.id}}')) {
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+            }
+        }
+        localStorage.clear();
+        cart = {};
+        updateCart(cart);
+    }
+
+
+    function updateCart(cart) {
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item][0];
+
+            if (('div' + item) == ('divpr{{i.id}}')) {
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+            }
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        updatePopover(cart);
+    }
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        //        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        if (cart['pr' + a][0] == 0) {
+            document.getElementById('divpr' + a).innerHTML = '<button id="pr' + a + '" class="btn btn-primary cart">Add to Cart</button>';
+            delete cart['pr' + a];
+        } else {
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        }
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+</script>
+{% endblock %}
+

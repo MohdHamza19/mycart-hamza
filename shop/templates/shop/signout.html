@@ -1,0 +1,64 @@
+{% extends 'shop/basic.html' %}
+{% block title %} Sign out {% endblock %}
+{% block css %}
+
+@media (min-width: 991px)
+{
+    body
+    {
+        padding-top:75px;
+    }
+}
+
+@media (max-width: 575px)
+{
+    body
+    {
+        padding-top:115px;
+    }
+}
+
+
+{% endblock %}
+
+{% block css2 %}
+
+footer
+        {
+            background-color:#B0B0B0;
+            padding:50px;
+            padding-top:80px;
+            position:relative;
+            width:100%;
+            top: 130px;
+            bottom:0px;
+        }
+
+{% endblock %}
+
+
+{% block body %}
+{% load static %}
+<div class="container my-3">
+<!--    <h3>Login</h3>-->
+<!--    <div class="col my-4">-->
+        <form method="post" action="/shop/signout/">{% csrf_token %}
+            <h4>Are you sure you want to sign out? The items in your cart will be lost.</h4>
+            <button type="submit" class="btn btn-primary">Yes</button> <button onclick="window.history.go(-1); return false;" class="btn btn-light">No</button>
+        </form>
+<!--    </div>-->
+</div>
+
+
+
+{% endblock %}
+{% block js %}
+<script>
+    {% if out %}
+        alert('Logged out successfully');
+        localStorage.clear();
+        document.location = "/shop";
+    {% endif %}
+
+</script>
+{% endblock %}

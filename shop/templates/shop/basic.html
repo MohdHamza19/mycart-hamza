@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     {% block link %}{% endblock %}
+
+<!--      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+<!--      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Sriracha&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<!--    <script src='https://kit.fontawesome.com/a076d05399.js'></script>-->
+      <script defer src="https://friconix.com/cdn/friconix.js"> </script>
+
+
+{% block link2 %}{% endblock %}
+
+
+<!--      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+    body {
+      background-color: #F3EEEE;
+      padding: 65px;
+    }
+    .modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 5px;
+    background: #fff;
+    /* background: -moz-linear-gradient(#fff, #999); */
+    /* background: -webkit-linear-gradient(#fff, #999); */
+    /* background: -o-linear-gradient(#fff, #999); */
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+      {% block css %} {% endblock %}
+
+
+
+        @media (min-width: 100px) {
+            .animate {
+                animation-duration: 0.3s;
+                -webkit-animation-duration: 0.3s;
+                animation-fill-mode: both;
+                -webkit-animation-fill-mode: both;
+            }
+        }
+        body
+        {
+                padding-left: 0px;
+                padding-right: 0px;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(1rem);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0rem);
+                opacity: 1;
+            }
+
+            0% {
+                transform: translateY(1rem);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes slideIn {
+            0% {
+                -webkit-transform: transform;
+                -webkit-opacity: 0;
+            }
+
+            100% {
+                -webkit-transform: translateY(0);
+                -webkit-opacity: 1;
+            }
+
+            0% {
+                -webkit-transform: translateY(1rem);
+                -webkit-opacity: 0;
+            }
+        }
+
+        .slideIn {
+            -webkit-animation-name: slideIn;
+            animation-name: slideIn;
+        }
+
+        .fo {
+            font-family: 'Roboto', sans-serif;
+
+        }
+        footer
+        {
+            background-color:#B0B0B0;
+            padding:50px;
+            position:relative;
+            width:100%;
+            top: 100px;
+            bottom:0px;
+        }
+
+
+@media (min-width: 991px)
+{
+    body
+    {
+        padding-top:100px;
+    }
+}
+
+<!--@media (max-width: 575px)-->
+<!--{-->
+<!--    body-->
+<!--    {-->
+<!--        padding-top:60px;-->
+<!--    }-->
+<!--}-->
+{% block css2 %}{% endblock %}
+
+
+
+    </style>
+    </head>
+  <body>
+
+{% load static %}
+<!--  https://drscdn.500px.org/photo/1020072909/m%3D900/v2?sig=55d2dd16bb08749b8dd92fdff18ffe9602ba246dca20472f79fa22c375f1aa02-->
+<!--  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
+<!--    <a class="navbar-brand mx-2" href="/shop" ><img src="https://i.ibb.co/txwq47j/Mycart.png" width="150"></a>-->
+<!--      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--      </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--      <ul class="navbar-nav mr-auto">-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="/shop/about">About Us</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="/shop/tracker">Tracker</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="/shop/contact">Contact Us</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <form class="form-inline my-2 my-lg-0">-->
+<!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--      </form>-->
+<!--      <button type="button" class="btn btn-secondary mx-3" id="popcart" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Vivamus-->
+<!--          sagittis lacus vel augue laoreet rutrum faucibus.">-->
+<!--          Cart(<span id="cart">0</span>)-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+
+<!--      <div class="row">-->
+            <div class="col-12 col-sm-6 col-md-6">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand mx-3" href="/shop" style="padding:0;"><img src="https://i.ibb.co/MPCxGpX/MyCart2.png" width="140px"></a>
+<!--                <i class="material-icons"></i>-->
+
+                <div class="btn btn-primary btn-sm" id="popcart1" data-container="body" data-html="true" data-toggle="popover1" data-placement="bottom" data-content="" style="size:2px">
+                    <i class="material-icons dp48" style="color:white;position:relative; font-size:27px">person</i>
+                </div>
+
+
+<!--                <div id="id01" class="w3-modal">-->
+<!--                    <div class="w3-modal-content" style="border-radius:4px">-->
+<!--                      <div class="w3-container">-->
+<!--                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>-->
+<!--                        <p>Some text. Some text. Some text.</p>-->
+<!--                        <p>Some text. Some text. Some text.</p>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--                  <div class="modal-dialog" role="document">-->
+<!--                    <div class="modal-content">-->
+<!--                      <div class="modal-header">-->
+<!--                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                          <span aria-hidden="true">&times;</span>-->
+<!--                        </button>-->
+<!--                      </div>-->
+<!--                      <div class="modal-body">-->
+<!--                        ...-->
+<!--                      </div>-->
+<!--                      <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                        <i class="far fa-user-circle" style="color:white"></i>-->
+
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+                <div class="row">
+                    <div class="col-9 col-md-9 col-sm-7">
+                        <form method='get' action="/shop/search/" class="my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
+<!--                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>-->
+<!--                    <div class="collapse navbar-collapse col-md-2" id="navbarSupportedContent1">-->
+                        </form>
+
+                    </div>
+                    <div class="col-3 col-md-3 col-sm-5" style="padding-left:5px;margin:0">
+                        <button type="button" class="btn" id="popcart" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+                                sagittis lacus vel augue laoreet rutrum faucibus." style="background-color:#007BFF;border:0;color:white;padding-left:0;padding-top:7px" ><i class="fa fa-shopping-cart" style="font-size:17px"></i> (<span id="cart">0</span>)
+                        </button>
+                    </div>
+                </div>
+<!--        </div>-->
+
+            </div>
+<!--      </div>-->
+<!--        <div class="collapse navbar-collapse col-md-4" id="navbarSupportedContent" style="padding-left:15%;padding-right:35%">-->
+
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="top:55px; padding: 0px">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link fo mx-2"><b>Shop by category: </b><span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fo mx-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Electronics
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/shop/productbycategory/{{categ.0}}">Mobile Phones</a>
+                        <a class="dropdown-item" href="/shop/productbycategory/{{categ.1}}">Laptops</a>
+                        <!--                        <div class="dropdown-divider"></div>-->
+                        <a class="dropdown-item" href="/shop/productbycategory/Smart watches">Smart Watches</a>
+                        <a class="dropdown-item" href="/shop/productbycategory/Headphones">Headphones</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fo mx-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Home Appliances
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/shop/productbycategory/Vaccum Cleaners">Vaccum Cleaners</a>
+                        <!--                        <div class="dropdown-divider"></div>-->
+                        <a class="dropdown-item" href="/shop/productbycategory/Refrigerators">Refrigerators</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fo mx-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Furniture
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/shop/productbycategory/Lamps">Lamps</a>
+                        <a class="dropdown-item" href="/shop/productbycategory/Tables">Tables</a>
+<!--                        <a class="dropdown-item" href="#">Tables</a>-->
+                        <!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item" href="#">Sofa sets</a>-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+  {% block body %} {% endblock %}
+    <footer class="footer">
+        <div class="footer-container">
+            <span>
+                <ul class="navbar-nav mr-auto">
+                    <li>
+                        <a class="nav-link" href="/shop" style="display:inline-block">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/shop/about" style="display:inline-block">About Us</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/shop/tracker" style="display:inline-block">Tracker</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/shop/contact" style="display:inline-block">Contact Us</a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a class="nav-link" href="/shop/yourOrders" style="display:inline-block">Orders</a>-->
+<!--                    </li>-->
+
+                </ul></span>
+        </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  {% block js %} {% endblock %}
+  </body>
+</html>
